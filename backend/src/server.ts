@@ -23,6 +23,6 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-app.listen(port, () => {
-  console.log(`Backend server running on http://localhost:${port}`);
+app.listen(Number(port), '0.0.0.0', () => {
+  console.log(`Backend server running on port ${port}`);
 });
