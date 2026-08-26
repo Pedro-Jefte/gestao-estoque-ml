@@ -1,0 +1,7 @@
+.gemini
+.agent
+.impeccable
+node_modules/
+.env
+dist/
+build/

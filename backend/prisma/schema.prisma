@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id               String   @id @default(uuid())
+  mlItemId         String?  @unique // ID do produto no Mercado Livre
+  title            String
+  sku              String?  @unique
+  price            Float
+  stockQuantity    Int      @default(0)
+  imageUrl         String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model MeliConfig {
+  id               Int      @id @default(1)
+  accessToken      String   @db.Text
+  refreshToken     String   @db.Text
+  expiresAt        DateTime
+  userId           String?  // ID do usuário logado no ML
+  updatedAt        DateTime @updatedAt
+}
